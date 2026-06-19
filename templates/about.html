@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+{% block title %}About — Motion Mouse{% endblock %}
+
+{% block content %}
+
+<style>
+/* ================= ABOUT PAGE ================= */
+
+.about-wrap{
+  max-width:1200px;
+  margin:auto;
+}
+
+/* HERO (BANNER STYLE) */
+.about-hero{
+  position:relative;
+  border-radius:24px;
+  overflow:hidden;
+  margin-bottom:70px;
+}
+
+.about-hero img{
+  width:100%;
+  height:420px;
+  object-fit:cover;
+  filter:brightness(0.55);
+}
+
+.about-hero-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:30px;
+}
+
+.about-hero h1{
+  font-size:3rem;
+  font-weight:800;
+  background:linear-gradient(135deg,#5eead4,#38bdf8);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  max-width:700px;
+}
+
+/* IMAGE CARD */
+.image-card{
+  background:var(--glass);
+  border:1px solid var(--glass-border);
+  border-radius:22px;
+  overflow:hidden;
+  transition:.4s;
+  height:100%;
+}
+
+.image-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 55px rgba(0,0,0,.5);
+}
+
+.image-card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+
+.image-card-body{
+  padding:22px;
+}
+
+.image-card-body h5{
+  font-weight:600;
+  margin-bottom:10px;
+}
+
+/* SECTION */
+.section{
+  margin-bottom:80px;
+}
+
+.section h2{
+  font-weight:700;
+  margin-bottom:30px;
+}
+
+/* WORKFLOW */
+.workflow-card{
+  background:linear-gradient(
+    135deg,
+    rgba(94,234,212,.12),
+    rgba(56,189,248,.12)
+  );
+  border-radius:20px;
+  padding:30px;
+}
+
+/* TECH STACK */
+.tech-box{
+  background:var(--glass);
+  border:1px solid var(--glass-border);
+  border-radius:18px;
+  padding:20px;
+  text-align:center;
+}
+</style>
+
+<div class="about-wrap">
+
+  <!-- ================= HERO (BANNER) ================= -->
+  <div class="about-hero">
+    <img src="{{ url_for('static', filename='images/practical.jpeg') }}" alt="About banner">
+
+    <div class="about-hero-overlay">
+      <h1>
+        A practical system for<br>
+        touchless computer control
+      </h1>
+    </div>
+  </div>
+
+  <!-- ================= PURPOSE ================= -->
+  <section class="section">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="image-card">
+          <img src="{{ url_for('static', filename='images/project-goal.jpeg') }}">
+          <div class="image-card-body">
+            <h5>Project Goal</h5>
+            <p>
+              Explore how hand movement can replace
+              traditional mouse input.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="image-card">
+          <img src="{{ url_for('static', filename='images/Design.jpeg') }}">
+          <div class="image-card-body">
+            <h5>Design Focus</h5>
+            <p>
+              Fast response, smooth control,
+              and simple gesture rules.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="image-card">
+          <img src="{{ url_for('static', filename='images/use_case.jpeg') }}">
+          <div class="image-card-body">
+            <h5>Use Case</h5>
+            <p>
+              Learning, experimentation,
+              and future interaction systems.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORKFLOW ================= -->
+  <section class="section">
+    <h2>System Workflow</h2>
+
+    <div class="workflow-card">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <strong>Camera Input</strong>
+          <p>Webcam captures live frames.</p>
+        </div>
+        <div class="col-md-4">
+          <strong>Hand Analysis</strong>
+          <p>Finger positions and distances extracted.</p>
+        </div>
+        <div class="col-md-4">
+          <strong>System Action</strong>
+          <p>Cursor and system events triggered.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TECH STACK ================= -->
+  <section class="section">
+    <h2>Technology Stack</h2>
+
+    <div class="row g-4">
+      <div class="col-md-3"><div class="tech-box">Python</div></div>
+      <div class="col-md-3"><div class="tech-box">OpenCV</div></div>
+      <div class="col-md-3"><div class="tech-box">MediaPipe</div></div>
+      <div class="col-md-3"><div class="tech-box">Flask</div></div>
+    </div>
+  </section>
+
+</div>
+
+{% endblock %}

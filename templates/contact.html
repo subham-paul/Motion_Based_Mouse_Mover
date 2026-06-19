@@ -1,0 +1,220 @@
+{% extends "base.html" %}
+{% block title %}Contact — Motion Mouse{% endblock %}
+
+{% block content %}
+
+<style>
+/* ================= CONTACT ================= */
+
+.contact-wrap{
+  max-width:1200px;
+  margin:auto;
+}
+
+/* HERO */
+.contact-hero{
+  position:relative;
+  border-radius:26px;
+  overflow:hidden;
+  margin-bottom:70px;
+}
+
+.contact-hero img{
+  width:100%;
+  height:360px;
+  object-fit:cover;
+  filter:brightness(0.55);
+}
+
+.contact-hero-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:30px;
+}
+
+.contact-hero h1{
+  font-size:2.8rem;
+  font-weight:800;
+  background:linear-gradient(135deg,#5eead4,#38bdf8);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.contact-hero p{
+  max-width:600px;
+  margin-top:12px;
+}
+
+/* FLASH MESSAGE */
+.flash-success{
+  background:linear-gradient(135deg,rgba(94,234,212,.25),rgba(56,189,248,.25));
+  border:1px solid var(--glass-border);
+  border-radius:18px;
+  padding:18px 22px;
+  margin-bottom:30px;
+  animation:slideFade .6s ease;
+}
+
+@keyframes slideFade{
+  from{opacity:0; transform:translateY(-12px)}
+  to{opacity:1; transform:translateY(0)}
+}
+
+/* CARD */
+.contact-card{
+  background:var(--glass);
+  border:1px solid var(--glass-border);
+  border-radius:22px;
+  padding:30px;
+  height:100%;
+  transition:.35s;
+}
+
+.contact-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 55px rgba(0,0,0,.5);
+}
+
+/* FORM */
+.form-control{
+  background:transparent;
+  border:1px solid var(--glass-border);
+  color:var(--text);
+  border-radius:14px;
+  padding:14px;
+}
+
+.form-control:focus{
+  background:transparent;
+  border-color:var(--accent);
+  box-shadow:none;
+  color:var(--text);
+}
+
+/* MAP */
+.map-box{
+  border-radius:22px;
+  overflow:hidden;
+  border:1px solid var(--glass-border);
+  height:320px;
+}
+
+.map-box iframe{
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+/* SECTION */
+.section{
+  margin-bottom:80px;
+}
+</style>
+
+<div class="contact-wrap">
+
+  <!-- ================= HERO ================= -->
+  <section class="contact-hero">
+    <img src="{{ url_for('static', filename='images/contact_banner.jpeg') }}" alt="Contact banner">
+
+    <div class="contact-hero-overlay">
+      <div>
+        <h1>Contact</h1>
+        <p>
+          Feedback, questions, or suggestions related to Motion Mouse.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FLASH MESSAGE ================= -->
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="flash-success">
+        {{ messages[0] }}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <!-- ================= INFO ================= -->
+  <section class="section">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="contact-card">
+          <h5>Project Domain</h5>
+          <p>Computer Vision & Human–Computer Interaction</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="contact-card">
+          <h5>Focus Area</h5>
+          <p>Gesture control and touchless input systems</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="contact-card">
+          <h5>Development Status</h5>
+          <p>Active and extendable</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FORM + MAP ================= -->
+  <section class="section">
+    <div class="row g-4">
+
+      <!-- FORM -->
+      <div class="col-md-6">
+        <div class="contact-card">
+          <h5>Send a message</h5>
+
+          <form method="POST">
+            <div class="mb-3">
+              <input name="name" type="text" class="form-control" placeholder="Your name" required>
+            </div>
+
+            <div class="mb-3">
+              <input name="email" type="email" class="form-control" placeholder="Email address" required>
+            </div>
+
+            <div class="mb-3">
+              <textarea name="message" class="form-control" rows="5" placeholder="Message" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-accent">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- MAP -->
+      <div class="col-md-6">
+        <div class="contact-card">
+          <h5>Location</h5>
+
+          <div class="map-box mt-3">
+            <iframe
+              src="https://www.google.com/maps?q=Techno%20India%20University&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+
+          <p class="mt-3">
+            This project is developed as part of academic and experimental work.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+{% endblock %}
